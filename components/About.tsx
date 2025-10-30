@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Users, Truck, Shield } from "lucide-react";
+import { Award, Users, Truck, Shield, MapPin } from "lucide-react";
 
 export default function About() {
   const features = [
@@ -86,11 +86,23 @@ export default function About() {
               lubelskie oraz okolice Siedlec. Dzięki sprawnej logistyce
               zapewniamy terminową dostawę i odbiór sprzętu.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-lg font-semibold text-primary">
-              <span>🏙️ Warszawa</span>
-              <span>🏛️ Lublin</span>
-              <span>🏘️ Siedlce</span>
-              <span>➕ i więcej</span>
+            <div className="flex flex-wrap justify-center gap-6 text-lg font-semibold text-gray-700">
+              <div className="flex items-center gap-2">
+                <MapPin className="text-primary" size={20} />
+                <span>Warszawa</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="text-primary" size={20} />
+                <span>Lublin</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="text-primary" size={20} />
+                <span>Siedlce</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-primary">+</span>
+                <span>i więcej</span>
+              </div>
             </div>
           </div>
         </motion.div>

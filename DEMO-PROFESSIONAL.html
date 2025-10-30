@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SzalunkiPro - Profesjonalny Wynajem Szalunków</title>
+
+    <!-- Google Fonts - Inter (Professional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            letter-spacing: -0.01em;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .logo-box {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #FF6B35, #E5551C);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #FF6B35;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B35, #E5551C);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.25);
+        }
+
+        .btn-outline {
+            border: 2px solid #FF6B35;
+            color: #FF6B35;
+            padding: 0.75rem 1.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            background: white;
+        }
+
+        .btn-outline:hover {
+            background: #FF6B35;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 90px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #dbeafe 100%);
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.08), transparent);
+            border-radius: 50%;
+            top: -250px;
+            right: -100px;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: rgba(255, 107, 53, 0.08);
+            color: #FF6B35;
+            padding: 0.625rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1.75rem;
+        }
+
+        h1 {
+            font-size: 3.75rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .highlight {
+            color: #FF6B35;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 2.25rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .benefits {
+            margin-bottom: 2.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            margin-bottom: 1rem;
+            font-size: 1.0625rem;
+            font-weight: 500;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: #FF6B35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 560px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .stat-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem 1.75rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .stat-card.top {
+            top: 2rem;
+            right: 2rem;
+        }
+
+        .stat-card.bottom {
+            bottom: 2rem;
+            left: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #FF6B35;
+            line-height: 1;
+            margin-bottom: 0.375rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-light {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f9fafb;
+        }
+
+        .section-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2.25rem;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f3f4f6;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #FF6B35;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 107, 53, 0.08);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #FF6B35;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .card h3 {
+            font-size: 1.375rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            color: #6b7280;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+            font-size: 0.9375rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features li {
+            padding: 0.375rem 0;
+            color: #4b5563;
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .card-features li:before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #FF6B35;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 0.375rem 0.875rem;
+            border-radius: 50px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge-green {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Calculator */
+        .calculator {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.625rem;
+            color: #374151;
+            font-size: 0.9375rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.875rem 1.125rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #93c5fd;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.75rem;
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9375rem;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(30, 58, 138, 0.08));
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .result-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #FF6B35;
+            text-align: center;
+            margin-bottom: 0.625rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h3 {
+            color: white;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+            font-size: 1.0625rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.9375rem;
+        }
+
+        .footer a:hover {
+            color: #FF6B35;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            font-size: 0.9375rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* SVG Icons */
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <div class="logo-box">S</div>
+                <div>
+                    <div style="font-size: 1.125rem; line-height: 1.2;">SzalunkiPro</div>
+                    <div style="font-size: 0.6875rem; color: #6b7280; font-weight: 500;">Profesjonalny wynajem</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#o-nas">O nas</a></li>
+                <li><a href="#uslugi">Usługi</a></li>
+                <li><a href="#kalkulator">Kalkulator</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <a href="tel:+48123456789" class="btn-primary">
+                <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Zadzwoń
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div>
+                <div class="badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    Profesjonalny wynajem szalunków
+                </div>
+                <h1>Nowoczesne <span class="highlight">Szalunki Budowlane</span> dla Twojej Inwestycji</h1>
+                <p class="hero-description">
+                    Specjalizujemy się w wynajmie szalunków stropowych najwyższej jakości. Obsługujemy Warszawę, Lublin, Siedlce i całą Polskę wschodnią i centralną.
+                </p>
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <span class="checkmark">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Dostawa na całą Polskę wschodnią</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="checkmark">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Profesjonalne doradztwo</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="checkmark">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Konkurencyjne ceny</span>
+                    </div>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#kalkulator" class="btn-primary">
+                        Oblicz koszt wynajmu
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#kontakt" class="btn-outline">Skontaktuj się z nami</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=1000&fit=crop&q=80" alt="Profesjonalne szalunki budowlane" class="hero-image">
+                <div class="stat-card top">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Zrealizowanych projektów</div>
+                </div>
+                <div class="stat-card bottom">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Wsparcie techniczne</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="o-nas" class="section-light">
+        <div class="section-content">
+            <div class="section-header">
+                <h2>Kim jesteśmy?</h2>
+                <p class="section-description">
+                    Jesteśmy dynamicznie rozwijającą się firmą specjalizującą się w profesjonalnym wynajmie szalunków budowlanych. Nasza misja to dostarczanie najwyższej jakości rozwiązań dla branży budowlanej.
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>Doświadczenie</h3>
+                    <p>Lata doświadczenia w branży budowlanej i wynajmie szalunków</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>Profesjonalizm</h3>
+                    <p>Wykwalifikowany zespół doradców technicznych</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <h3>Szybka dostawa</h3>
+                    <p>Sprawna logistyka i terminowa dostawa na teren budowy</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Gwarancja jakości</h3>
+                    <p>Tylko najwyższej jakości, regularnie serwisowany sprzęt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="uslugi" class="section-gray">
+        <div class="section-content">
+            <div class="section-header">
+                <h2>Nasze Usługi</h2>
+                <p class="section-description">
+                    Oferujemy kompleksowy wynajem szalunków budowlanych. Rozpoczynamy od szalunków stropowych, a w najbliższych miesiącach planujemy dynamiczne rozszerzenie oferty.
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-badge badge-green">Dostępne teraz</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+                    </div>
+                    <h3>Szalunki Stropowe</h3>
+                    <p>Nowoczesne systemy szalunków stropowych - nasza główna specjalizacja.</p>
+                    <ul class="card-features">
+                        <li>Systemy ramowe</li>
+                        <li>Systemy tableowe</li>
+                        <li>Podpory telescopowe</li>
+                        <li>Belki stropowe</li>
+                    </ul>
+                    <a href="#kontakt" style="color: #FF6B35; font-weight: 600; text-decoration: none;">Zapytaj o ofertę →</a>
+                </div>
+                <div class="card">
+                    <span class="card-badge badge-blue">Wkrótce</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h3>Szalunki Ścienne</h3>
+                    <p>Profesjonalne systemy do wykonywania ścian betonowych.</p>
+                    <ul class="card-features">
+                        <li>Szalunki wielkowymiarowe</li>
+                        <li>Systemy modularne</li>
+                        <li>Szalunki specjalne</li>
+                        <li>Akcesoria montażowe</li>
+                    </ul>
+                    <div style="color: #6b7280; font-weight: 600;">Bądź na bieżąco</div>
+                </div>
+                <div class="card">
+                    <span class="card-badge badge-blue">Planowane</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
+                    <h3>Szalunki do Słupów</h3>
+                    <p>Specjalistyczne rozwiązania do wykonywania słupów o różnych przekrojach.</p>
+                    <ul class="card-features">
+                        <li>Szalunki okrągłe</li>
+                        <li>Szalunki kwadratowe</li>
+                        <li>Systemy regulowane</li>
+                        <li>Łączniki i akcesoria</li>
+                    </ul>
+                    <div style="color: #6b7280; font-weight: 600;">Bądź na bieżąco</div>
+                </div>
+                <div class="card">
+                    <span class="card-badge badge-blue">W przygotowaniu</span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    </div>
+                    <h3>Szalunki Mostowe</h3>
+                    <p>Zaawansowane systemy szalunkowe do konstrukcji mostowych i wiaduktów.</p>
+                    <ul class="card-features">
+                        <li>Wózki podszalunkowe</li>
+                        <li>Szalunki deskowań</li>
+                        <li>Systemy nośne</li>
+                        <li>Doradztwo techniczne</li>
+                    </ul>
+                    <div style="color: #6b7280; font-weight: 600;">Bądź na bieżąco</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="kalkulator" class="section-light" style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.03), rgba(30, 58, 138, 0.03));">
+        <div class="section-content">
+            <div class="section-header">
+                <div class="badge" style="margin: 0 auto 1.25rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path><circle cx="6.5" cy="11.5" r="1.5"></circle><circle cx="9.5" cy="7.5" r="1.5"></circle><circle cx="14.5" cy="7.5" r="1.5"></circle><circle cx="17.5" cy="11.5" r="1.5"></circle>
+                    </svg>
+                    Kalkulator AI
+                </div>
+                <h2>Oblicz Koszt Wynajmu</h2>
+                <p class="section-description">
+                    Skorzystaj z naszego inteligentnego kalkulatora, aby szybko oszacować koszty wynajmu szalunków
+                </p>
+            </div>
+            <div class="calculator">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.75rem;">
+                    <div class="form-group">
+                        <label>Powierzchnia stropu (m²)</label>
+                        <input type="number" placeholder="np. 150" value="150">
+                    </div>
+                    <div class="form-group">
+                        <label>Okres wynajmu (dni)</label>
+                        <input type="number" placeholder="np. 30" value="30">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Typ systemu szalunkowego</label>
+                    <select>
+                        <option>System Ramowy</option>
+                        <option>System Tableowy</option>
+                        <option>Podpory Telescopowe</option>
+                    </select>
+                </div>
+                <div class="info-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                        <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <div>
+                        <strong>Wskazówka:</strong> Wynajem na dłuższy okres = większy rabat! Wynajem powyżej 7 dni: 5% rabatu, 14 dni: 10% rabatu, 30 dni: 15% rabatu.
+                    </div>
+                </div>
+                <button class="btn-primary" style="width: 100%; justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="16" y2="14"></line><line x1="8" y1="18" x2="10" y2="18"></line>
+                    </svg>
+                    Oblicz koszt wynajmu
+                </button>
+                <div class="result-box">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem; font-weight: 500;">Szacowany koszt wynajmu</div>
+                        <div class="result-price">3,543.75 zł</div>
+                        <div style="font-size: 0.875rem; color: #6b7280; font-weight: 500;">Rabat 15% zastosowany</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; text-align: center; border-top: 1px solid #d1d5db; padding-top: 1.5rem;">
+                        <div>
+                            <div style="font-size: 0.8125rem; color: #6b7280; margin-bottom: 0.25rem;">Powierzchnia</div>
+                            <div style="font-size: 1.25rem; font-weight: 700; color: #1f2937;">150 m²</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8125rem; color: #6b7280; margin-bottom: 0.25rem;">Okres</div>
+                            <div style="font-size: 1.25rem; font-weight: 700; color: #1f2937;">30 dni</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8125rem; color: #6b7280; margin-bottom: 0.25rem;">System</div>
+                            <div style="font-size: 1.25rem; font-weight: 700; color: #1f2937;">Ramowy</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.75rem; text-align: center;">
+                        <a href="#kontakt" class="btn-primary" style="background: #1E3A8A;">
+                            Zapytaj o szczegółową ofertę
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem; text-align: center; font-size: 0.875rem; color: #6b7280;">
+                    * Podane ceny są orientacyjne. Ostateczna wycena zależy od szczegółów projektu i dostępności sprzętu.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="section-gray">
+        <div class="section-content">
+            <div class="section-header">
+                <h2>Skontaktuj się z nami</h2>
+                <p class="section-description">
+                    Masz pytania? Potrzebujesz wyceny? Skontaktuj się z nami - odpowiemy najszybciej jak to możliwe!
+                </p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto;">
+                <div>
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 1.25rem;">
+                            <div class="card-icon" style="width: 52px; height: 52px; margin: 0;">
+                                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem;">Telefon</h3>
+                                <a href="tel:+48123456789" style="color: #6b7280; text-decoration: none; font-size: 1rem;">+48 123 456 789</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 1.25rem;">
+                            <div class="card-icon" style="width: 52px; height: 52px; margin: 0;">
+                                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem;">Email</h3>
+                                <a href="mailto:kontakt@szalunkipro.pl" style="color: #6b7280; text-decoration: none; font-size: 1rem;">kontakt@szalunkipro.pl</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; align-items: start; gap: 1.25rem;">
+                            <div class="card-icon" style="width: 52px; height: 52px; margin: 0;">
+                                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.125rem; margin-bottom: 0.375rem;">Obszar działania</h3>
+                                <p style="color: #6b7280; margin: 0; font-size: 1rem;">Warszawa, Lublin, Siedlce i okolice</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="margin-bottom: 1.75rem;">Formularz kontaktowy</h3>
+                    <div class="form-group">
+                        <label>Imię i nazwisko *</label>
+                        <input type="text" placeholder="Jan Kowalski">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" placeholder="jan@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon *</label>
+                            <input type="tel" placeholder="+48 123 456 789">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Wiadomość *</label>
+                        <textarea style="width: 100%; padding: 0.875rem 1.125rem; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 1rem; font-family: 'Inter', sans-serif; min-height: 140px; resize: vertical;" placeholder="Opisz swoje potrzeby..."></textarea>
+                    </div>
+                    <button class="btn-primary" style="width: 100%; justify-content: center;">
+                        Wyślij wiadomość
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="logo" style="margin-bottom: 1.75rem;">
+                    <div class="logo-box">S</div>
+                    <div>
+                        <div style="font-size: 1.125rem; color: white; line-height: 1.2;">SzalunkiPro</div>
+                        <div style="font-size: 0.6875rem;">Profesjonalny wynajem</div>
+                    </div>
+                </div>
+                <p style="margin-bottom: 1.75rem; line-height: 1.6;">
+                    Nowoczesne rozwiązania szalunkowe dla branży budowlanej. Obsługujemy Warszawę, Lublin, Siedlce i całą Polskę wschodnią.
+                </p>
+            </div>
+            <div>
+                <h3>Szybkie linki</h3>
+                <ul>
+                    <li><a href="#o-nas">O nas</a></li>
+                    <li><a href="#uslugi">Usługi</a></li>
+                    <li><a href="#kalkulator">Kalkulator</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Nasze usługi</h3>
+                <ul>
+                    <li>Szalunki stropowe</li>
+                    <li>Szalunki ścienne (wkrótce)</li>
+                    <li>Szalunki do słupów (wkrótce)</li>
+                    <li>Szalunki mostowe (planowane)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Kontakt</h3>
+                <ul>
+                    <li><a href="tel:+48123456789">+48 123 456 789</a></li>
+                    <li><a href="mailto:kontakt@szalunkipro.pl">kontakt@szalunkipro.pl</a></li>
+                    <li>Warszawa, Lublin, Siedlce</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SzalunkiPro. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
